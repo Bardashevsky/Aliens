@@ -8,22 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		4F5BF4DA223F7D3100E4FD41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BF4D9223F7D3100E4FD41 /* AppDelegate.swift */; };
-		4F5BF4DC223F7D3100E4FD41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BF4DB223F7D3100E4FD41 /* ViewController.swift */; };
+		4F5BF4DC223F7D3100E4FD41 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BF4DB223F7D3100E4FD41 /* GameViewController.swift */; };
 		4F5BF4DF223F7D3100E4FD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BF4DD223F7D3100E4FD41 /* Main.storyboard */; };
 		4F5BF4E2223F7D3100E4FD41 /* Aliens.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BF4E0223F7D3100E4FD41 /* Aliens.xcdatamodeld */; };
 		4F5BF4E4223F7D3400E4FD41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BF4E3223F7D3400E4FD41 /* Assets.xcassets */; };
 		4F5BF4E7223F7D3400E4FD41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BF4E5223F7D3400E4FD41 /* LaunchScreen.storyboard */; };
+		4F5BF4EF223FCC8200E4FD41 /* ScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BF4EE223FCC8200E4FD41 /* ScoreTableViewController.swift */; };
+		4F5BF4F1223FCCF900E4FD41 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BF4F0223FCCF900E4FD41 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4F5BF4D6223F7D3100E4FD41 /* Aliens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aliens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F5BF4D9223F7D3100E4FD41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4F5BF4DB223F7D3100E4FD41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4F5BF4DB223F7D3100E4FD41 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		4F5BF4DE223F7D3100E4FD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F5BF4E1223F7D3100E4FD41 /* Aliens.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Aliens.xcdatamodel; sourceTree = "<group>"; };
 		4F5BF4E3223F7D3400E4FD41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F5BF4E6223F7D3400E4FD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F5BF4E8223F7D3400E4FD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F5BF4EE223FCC8200E4FD41 /* ScoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewController.swift; sourceTree = "<group>"; };
+		4F5BF4F0223FCCF900E4FD41 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +61,9 @@
 			isa = PBXGroup;
 			children = (
 				4F5BF4D9223F7D3100E4FD41 /* AppDelegate.swift */,
-				4F5BF4DB223F7D3100E4FD41 /* ViewController.swift */,
+				4F5BF4F0223FCCF900E4FD41 /* MainViewController.swift */,
+				4F5BF4DB223F7D3100E4FD41 /* GameViewController.swift */,
+				4F5BF4EE223FCC8200E4FD41 /* ScoreTableViewController.swift */,
 				4F5BF4DD223F7D3100E4FD41 /* Main.storyboard */,
 				4F5BF4E3223F7D3400E4FD41 /* Assets.xcassets */,
 				4F5BF4E5223F7D3400E4FD41 /* LaunchScreen.storyboard */,
@@ -138,9 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F5BF4EF223FCC8200E4FD41 /* ScoreTableViewController.swift in Sources */,
 				4F5BF4E2223F7D3100E4FD41 /* Aliens.xcdatamodeld in Sources */,
-				4F5BF4DC223F7D3100E4FD41 /* ViewController.swift in Sources */,
+				4F5BF4DC223F7D3100E4FD41 /* GameViewController.swift in Sources */,
 				4F5BF4DA223F7D3100E4FD41 /* AppDelegate.swift in Sources */,
+				4F5BF4F1223FCCF900E4FD41 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
