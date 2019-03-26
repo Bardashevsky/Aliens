@@ -14,8 +14,9 @@ class ScoreTableViewController: UITableViewController {
     var arrayOfPlayers = [NewPlayer]()
     var context: NSManagedObjectContext!
     var isMainViewController = false
+    var lastPlayer: NewPlayer?
     
-    //MARK: - Dismis logic
+    //MARK: - Init for dismiss
     func initWhithMainController(isMain: Bool) -> ScoreTableViewController {
         isMainViewController = isMain
         return self
@@ -59,6 +60,7 @@ class ScoreTableViewController: UITableViewController {
         } catch let error as NSError {
             print("Could not load data: \(error)")
         }
+        lastPlayer = array.last
         return array.sorted{$0.score > $1.score}
     }
 
@@ -81,13 +83,18 @@ class ScoreTableViewController: UITableViewController {
         }
         
         let player = arrayOfPlayers[indexPath.row]
+        cell?.textLabel?.textColor = .white
+        cell?.detailTextLabel?.textColor = .white
+        if player == lastPlayer {
+            UIView.transition(with: (cell?.textLabel)!, duration: 2, options: [.transitionCrossDissolve], animations: {
+                cell?.textLabel?.textColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+                cell?.detailTextLabel?.textColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+            }, completion: nil)
+        }
         
         cell?.textLabel?.text = player.name
-        cell?.textLabel?.textColor = .white
         cell?.backgroundColor = nil
-        
         cell?.detailTextLabel?.text = String(player.score)
-        cell?.detailTextLabel?.textColor = .white
         
         return cell!
         

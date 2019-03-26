@@ -24,6 +24,16 @@ class MainViewController: UIViewController {
         
         startButtonCreate()
         leaderBoardButtonCreate()
+        deallocatedSubviews()
+    }
+    //MARK: - Dealocated UITransitionView
+    func deallocatedSubviews() {
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        for view in (delegate?.window?.subviews)! {
+            if view != delegate?.window?.subviews.last {
+                view.removeFromSuperview()
+            }
+        }
     }
     
     //MARK: - StartButton & leaderBoardButton Create

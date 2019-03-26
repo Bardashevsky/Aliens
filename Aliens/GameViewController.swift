@@ -47,7 +47,7 @@ class GameViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    var imageForAnimate: UIImageView? = {
+    var imageForAnimate: UIImageView = {
         var imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         return imageView
@@ -69,7 +69,7 @@ class GameViewController: UIViewController {
         imageView.alpha = 0.4
         return imageView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,8 +99,10 @@ class GameViewController: UIViewController {
         
         addLabels()
         addSpaceShips()
-        imageForAnimateCreate()
         addConstraintsForPlanets()
+        imageForAnimate.frame = CGRect(x: 0, y: 0, width: planetSize, height: planetSize)
+        imageForAnimate.center = self.view.center
+        self.view.addSubview(imageForAnimate)
     }
     
     @objc func timerAction() {
@@ -134,6 +136,7 @@ class GameViewController: UIViewController {
         
         self.view.addSubview(scoreLabel)
         self.view.addSubview(timerLabel)
+        
     }
     
     //MARK: - PanGestureRecognizer
@@ -142,17 +145,12 @@ class GameViewController: UIViewController {
         if count >= arrayOfSpaceShips.count - 3 {
             arrayOfSpaceShips += arrayOfSpaceShips
         }
-        //UIApplication.shared.beginIgnoringInteractionEvents()
-        imageForAnimateCreate()
-        
         //MARK: - BluePlanet
         if tapLocation.x < self.view.bounds.minX + planetSize + 30 && tapLocation.y > self.view.bounds.maxY - planetSize - 30 {
-            print("Blue")
             gameLogic(ufoColor: "ufoBlue", center: self.bluePlanet.center)
         }
         //MARK: - YellowPlanet
         if tapLocation.x > self.view.bounds.maxX - planetSize - 30 && tapLocation.y > self.view.bounds.maxY - planetSize - 30 {
-            print("Yellow")
             gameLogic(ufoColor: "ufoYellow", center: self.yellowPlanet.center)
         }
         
@@ -163,8 +161,13 @@ class GameViewController: UIViewController {
     
     //MARK: - GameLogic How to change planet
     func gameLogic(ufoColor: String, center: CGPoint) {
+        imageForAnimate.layer.removeAllAnimations()
         if arrayOfSpaceShips[count] == ufoColor {
-            imageForAnimate!.image = UIImage(named: arrayOfSpaceShips[count])
+            imageForAnimate.image = UIImage(named: arrayOfSpaceShips[count])
+            imageForAnimate.frame = CGRect(x:  self.view.center.x - planetSize/2,
+                                           y: self.view.center.y - planetSize/2,
+                                           width: planetSize,
+                                           height: planetSize)
             count += 1
             firstImageView.image = UIImage(named: arrayOfSpaceShips[count])
             self.view.bringSubviewToFront(firstImageView)
@@ -172,28 +175,22 @@ class GameViewController: UIViewController {
             thirdImageView.image = UIImage(named: arrayOfSpaceShips[count + 2])
             
             UIView.animate(withDuration: 0.3, animations: {
-                self.imageForAnimate!.center = center
-                self.imageForAnimate?.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-            }) { (true) in
-                self.imageForAnimate?.image = nil
-                self.imageForAnimate = nil
+                self.imageForAnimate.center = center
+                self.imageForAnimate.frame = CGRect(x: center.x - 5, y: center.y - 5, width: 10, height: 10)
+                self.view.layer.removeAllAnimations()
+            }) { (isFinished) in
+                //                self.imageForAnimate.frame = CGRect(x:  self.view.center.x - self.planetSize/2,
+                //                                                    y: self.view.center.y - self.planetSize/2,
+                //                                                    width: self.planetSize,
+                //                                                    height: self.planetSize)
+                //                self.imageForAnimate?.removeFromSuperview()
+                //                self.imageForAnimate?.image = nil
+                //                self.imageForAnimate = nil
             }
             scoreCount += 1
         } else {
             scoreCount -= 1
         }
-    }
-    
-    func imageForAnimateCreate() {
-        
-        imageForAnimate = {
-            let imageView = UIImageView()
-            imageView.contentMode = .scaleAspectFill
-            return imageView
-        }()
-        imageForAnimate!.frame = CGRect(x: 0, y: 0, width: planetSize, height: planetSize)
-        imageForAnimate!.center = self.view.center
-        self.view.addSubview(imageForAnimate!)
     }
     
     func addSpaceShips() {
